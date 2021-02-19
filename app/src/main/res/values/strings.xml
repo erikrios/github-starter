@@ -13,4 +13,5 @@
     <string name="email">Dicoding Email</string>
     <string name="my_email">erikriosetiawan15@gmail.com</string>
     <string name="about">About</string>
+    <string name="share_message">View %1$s Github Profile Pages at : %2$s</string>
 </resources>
