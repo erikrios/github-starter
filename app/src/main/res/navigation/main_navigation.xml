@@ -9,7 +9,7 @@
         android:id="@+id/splashFragment"
         android:name="com.erikriosetiawan.githubstarter.ui.fragments.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_dashboardFragment"
             app:destination="@id/dashboardFragment"
@@ -20,7 +20,7 @@
         android:id="@+id/dashboardFragment"
         android:name="com.erikriosetiawan.githubstarter.ui.fragments.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
@@ -32,7 +32,11 @@
         android:id="@+id/detailsFragment"
         android:name="com.erikriosetiawan.githubstarter.ui.fragments.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="user"
+            app:argType="com.erikriosetiawan.githubstarter.models.User" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.erikriosetiawan.githubstarter.ui.fragments.AboutFragment"
