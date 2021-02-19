@@ -11,6 +11,7 @@
     <string name="open_in_browser">Open In Browser</string>
     <string name="share_button">Share</string>
     <string name="email">Dicoding Email</string>
+    <string name="my_github_username" translatable="false">erikrios</string>
     <string name="my_email" translatable="false">erikriosetiawan15@gmail.com</string>
     <string name="about">About</string>
     <string name="share_message">View %1$s Github Profile Pages at : %2$s</string>
