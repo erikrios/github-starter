@@ -31,6 +31,7 @@ class AboutFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val user = User(
             id = 42199285,
+            name = "Erik Rio Setiawan",
             username = "erikrios",
             avatarUrl = "https://avatars.githubusercontent.com/u/42199285?v=4",
             htmlUrl = "https://github.com/erikrios",
