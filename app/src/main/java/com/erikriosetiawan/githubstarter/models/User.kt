@@ -7,37 +7,37 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class User(
     @SerializedName("login")
-    var username: String,
+    var username: String = "",
     @SerializedName("id")
-    var id: Long,
+    var id: Long = -1,
     @SerializedName("name")
-    var name: String?,
+    var name: String? = null,
     @SerializedName("location")
-    var location: String?,
+    var location: String? = null,
     @SerializedName("public_repos")
-    var publicRepositories: Int?,
+    var publicRepositories: Int? = null,
     @SerializedName("public_gists")
-    var publicGists: Int?,
+    var publicGists: Int? = null,
     @SerializedName("company")
-    var company: String?,
+    var company: String? = null,
     @SerializedName("followers")
-    var followers: Int?,
+    var followers: Int? = null,
     @SerializedName("following")
-    var following: Int?,
+    var following: Int? = null,
     @SerializedName("avatar_url")
-    var avatarUrl: String,
+    var avatarUrl: String = "",
     @SerializedName("type")
-    var type: String,
+    var type: String = "User",
     @SerializedName("html_url")
-    var htmlUrl: String,
+    var htmlUrl: String = "",
     @SerializedName("blog")
-    var blog: String?,
+    var blog: String? = null,
     @SerializedName("bio")
-    var bio: String?,
+    var bio: String? = null,
     @SerializedName("hireable")
-    var hireable: Boolean?,
+    var hireable: Boolean? = false,
     @SerializedName("created_at")
-    var createdAt: String?,
+    var createdAt: String? = null,
     @SerializedName("updated_at")
-    var updatedAt: String?
+    var updatedAt: String? = null
 ) : Parcelable
