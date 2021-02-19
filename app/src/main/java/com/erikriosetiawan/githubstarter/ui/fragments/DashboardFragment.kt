@@ -4,17 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.erikriosetiawan.githubstarter.R
 import com.erikriosetiawan.githubstarter.adapters.UserAdapter
 import com.erikriosetiawan.githubstarter.databinding.FragmentDashboardBinding
 import com.erikriosetiawan.githubstarter.models.User
+import com.erikriosetiawan.githubstarter.ui.viewmodels.MainViewModel
+import com.erikriosetiawan.githubstarter.ui.viewstate.UsersViewState
 
 class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding
+    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,13 +32,39 @@ class DashboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleToolbar()
-        setRecyclerView(generateUsers())
+        mainViewModel.usersViewState.observe(
+            viewLifecycleOwner,
+            this@DashboardFragment::handleState
+        )
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun handleState(viewState: UsersViewState) {
+        handleLoading(viewState.loading)
+        viewState.exception?.let { handleError(it) }
+        viewState.users?.let { handleSuccess(it) }
+    }
+
+    private fun handleLoading(isLoading: Boolean) {
+        binding?.apply {
+            if (isLoading) {
+                rvUsers.visibility = View.GONE
+                progressBar.visibility = View.VISIBLE
+            } else {
+                progressBar.visibility = View.GONE
+                rvUsers.visibility = View.VISIBLE
+            }
+        }
+    }
+
+    private fun handleError(exception: Exception) =
+        Toast.makeText(context, exception.message, Toast.LENGTH_SHORT).show()
+
+    private fun handleSuccess(users: List<User>) = setRecyclerView(users)
 
     private fun setRecyclerView(users: List<User>) {
         val adapter = UserAdapter(users)
@@ -53,21 +84,5 @@ class DashboardFragment : Fragment() {
                 return@setOnMenuItemClickListener true
             }
         }
-    }
-
-    private fun generateUsers(): List<User> {
-        val users = mutableListOf<User>()
-
-        for (i in 0..50) {
-            val user = User(
-                username = "username $i",
-                htmlUrl = "https://github.com/erikrios",
-                id = i.toLong(),
-                avatarUrl = "https://avatars.githubusercontent.com/u/42199285?v=4"
-            )
-            users.add(user)
-        }
-
-        return users
     }
 }
