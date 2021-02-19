@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="developed_by">Dikembangkan Oleh\nErik Rio Setiawan</string>
+    <string name="no_data">Tidak Ada Data</string>
+    <string name="company">Perusahaan</string>
+    <string name="location">Lokasi</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="repository">Repositori</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="open_in_browser">Buka di Peramban</string>
+    <string name="share_button">Bagikan</string>
+    <string name="email">Email Dicoding</string>
+    <string name="about">Tentang</string>
+    <string name="share_message">Lihay %1$s Halaman Profit Github at : %2$s</string>
+</resources>
