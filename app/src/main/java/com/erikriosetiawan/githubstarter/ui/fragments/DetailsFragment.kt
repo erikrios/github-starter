@@ -43,6 +43,11 @@ class DetailsFragment : Fragment() {
         handleView(user)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun openInBrowser(user: User) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(user.htmlUrl))
         startActivity(intent)
@@ -85,10 +90,5 @@ class DetailsFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }
