@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.erikriosetiawan.githubstarter.R
 import com.erikriosetiawan.githubstarter.adapters.UserAdapter
 import com.erikriosetiawan.githubstarter.databinding.FragmentDashboardBinding
 import com.erikriosetiawan.githubstarter.models.User
@@ -25,6 +26,7 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        handleToolbar()
         setRecyclerView(generateUsers())
     }
 
@@ -40,6 +42,17 @@ class DashboardFragment : Fragment() {
             findNavController().navigate(action)
         }
         binding?.rvUsers?.adapter = adapter
+    }
+
+    private fun handleToolbar() {
+        val menu = binding?.toolbar?.menu
+        menu?.findItem(R.id.item_about)?.apply {
+            setOnMenuItemClickListener {
+                val action = DashboardFragmentDirections.actionDashboardFragmentToAboutFragment()
+                findNavController().navigate(action)
+                return@setOnMenuItemClickListener true
+            }
+        }
     }
 
     private fun generateUsers(): List<User> {
