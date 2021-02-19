@@ -40,7 +40,7 @@ class DetailsFragment : Fragment() {
             following = 49
             publicRepositories = 405
         }
-
+        handleView(user)
     }
 
     private fun openInBrowser(user: User) {
