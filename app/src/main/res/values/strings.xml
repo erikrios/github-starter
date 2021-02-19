@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Github Starter</string>
+    <string name="developed_by">Developed By\nErik Rio Setiawan</string>
 </resources>
